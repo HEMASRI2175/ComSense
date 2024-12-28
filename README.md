@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 # ComSense: Transforming Comments into Clarity, Empowering Insights for Smarter Decisions  
@@ -82,3 +83,6 @@ The tool enables users to input a YouTube video URL or fetch Twitter comments an
 - **Base64**
 
 ---  
+=======
+# ComSense
+>>>>>>> ebda9ca74655c6fbce4492d63ca924807eb60476
