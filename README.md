@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 
 # ComSense: Transforming Comments into Clarity, Empowering Insights for Smarter Decisions  
