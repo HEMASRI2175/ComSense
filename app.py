@@ -619,8 +619,8 @@ def send_email(name, sender_email, message):
         # Email configuration
         smtp_server = "smtp.gmail.com"
         smtp_port = 587
-        sender_email_address = "chettimchettyhemasri@gmail.com"  # Replace with your email
-        sender_email_password = "xmvb syyz audm kuzh"  # Replace with your email password
+        sender_email_address = "chettimchettyhemasri@gmail.com"  
+        sender_email_password = "xmvb syyz audm kuzh"  
 
         # Recipient email
         recipient_email = "chettimchettyhemasri@gmail.com"
