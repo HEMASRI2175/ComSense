@@ -4,7 +4,7 @@ tenacity>=8.0.1
 openai>=0.28.0
 google-api-python-client>=2.80.0
 langchain>=0.1.0
-langchain-google-genai
+langchain-google-genai>=0.0.5
 tiktoken
 tweepy
 pytube>=12.1.0
