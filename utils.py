@@ -21,7 +21,7 @@ def get_summary(text):
 
     #Summarization
     llm = ChatGoogleGenerativeAI(
-        model="gemini-pro",
+        model="gemini-1.5-flash",
         google_api_key=gemini_api_key
     )
     
