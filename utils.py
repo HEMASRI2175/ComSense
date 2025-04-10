@@ -1,19 +1,29 @@
 import streamlit as st
-import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_text_splitters import TokenTextSplitter
+from langchain.chains.summarize import load_summarize_chain
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
-
-# Load Gemini API key
-gemini_api_key = st.secrets.get('GEMINI_API_KEY', os.getenv("GEMINI_API_KEY"))
-genai.configure(api_key=gemini_api_key)
+gemini_api_key = st.secrets['GEMINI_API_KEY']
 
 def get_summary(text):
-    try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(f"Summarize the following text:\n{text}")
-        return response.text
-    except Exception as e:
-        st.error(f"Failed to generate summary: {e}")
-        return None
+    text_splitter = TokenTextSplitter(
+        chunk_size=1000, 
+        chunk_overlap=10
+    )
+    chunks = text_splitter.create_documents([text])
+
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-1.5-flash",
+        api_key=gemini_api_key
+    )
+    
+    chain = load_summarize_chain(
+        llm, 
+        chain_type="map_reduce"
+    )
+
+    response = chain.run(chunks)
+
+    return response
