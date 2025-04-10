@@ -15,7 +15,7 @@ def get_summary(text):
     chunks = text_splitter.create_documents([text])
 
     llm = ChatGoogleGenerativeAI(
-        model="models/gemini-1.5-flash",
+        model="gemini-1.5-flash",
         api_key=gemini_api_key
     )
     
