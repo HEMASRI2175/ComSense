@@ -3,13 +3,12 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from pytube import extract
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
 api_server_name = st.secrets["API_SERVICE_NAME"]
-api_version = st.secrets["API_VERSION"]
-youtube_api_key = st.secrets["YOUTUBE_API_KEY"]
+api_version = st.secrets['API_VERSION']
+youtube_api_key = st.secrets['YOUTUBE_API_KEY']
 
 def start_youtube_service():
     return build(api_server_name, api_version, developerKey=youtube_api_key)
@@ -23,7 +22,6 @@ def get_comments_thread(youtube, video_id, next_page_token):
         videoId=video_id,
         textFormat='plainText',
         maxResults=100,
-        pageToken=next_page_token
     ).execute()
     return results
 
@@ -42,7 +40,7 @@ def fetch_comments(url):
     youtube = start_youtube_service()
     video_id = extract_video_id_from_link(url)
     next_page_token = ''
-
+    
     try:
         data = get_comments_thread(youtube, video_id, next_page_token)
         all_comments = load_comments_in_format(data)
