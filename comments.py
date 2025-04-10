@@ -7,10 +7,9 @@ import os
 
 load_dotenv()
 
-# Use Streamlit secrets or fallback to environment variables
-api_server_name = st.secrets.get("API_SERVICE_NAME", "youtube")
-api_version = st.secrets.get("API_VERSION", "v3")
-youtube_api_key = st.secrets.get("YOUTUBE_API_KEY", os.getenv("YOUTUBE_API_KEY"))
+api_server_name = st.secrets["API_SERVICE_NAME"]
+api_version = st.secrets["API_VERSION"]
+youtube_api_key = st.secrets["YOUTUBE_API_KEY"]
 
 def start_youtube_service():
     return build(api_server_name, api_version, developerKey=youtube_api_key)
